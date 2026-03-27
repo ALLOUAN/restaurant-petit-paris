@@ -27,7 +27,7 @@ return new class extends Migration
             $table->dateTime('date_creation')->useCurrent();
             $table->dateTime('date_modification')->useCurrent()->useCurrentOnUpdate();
 
-            $table->foreign('id_client')->references('id_client')->on('clients')->nullOnDelete();
+            $table->foreign('id_client')->references('id_client')->on('clients_restaurant')->nullOnDelete();
             $table->foreign('id_table')->references('id_table')->on('tables')->restrictOnDelete();
             $table->foreign('id_employe_prise_reservation')->references('id_employe')->on('employes')->nullOnDelete();
         });

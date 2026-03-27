@@ -43,7 +43,7 @@ return new class extends Migration
             FROM tables t
             LEFT JOIN commandes c ON t.id_table = c.id_table
                 AND c.id_statut IN (2, 3, 4)
-            LEFT JOIN clients cl ON c.id_client = cl.id_client
+            LEFT JOIN clients_restaurant cl ON c.id_client = cl.id_client
         ");
 
         DB::unprepared("

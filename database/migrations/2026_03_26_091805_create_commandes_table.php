@@ -11,6 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('commandes');
+        Schema::enableForeignKeyConstraints();
+
         Schema::create('commandes', function (Blueprint $table) {
             $table->increments('id_commande');
             $table->string('numero_commande', 20)->unique();
@@ -40,7 +44,7 @@ return new class extends Migration
 
             $table->foreign('id_table')->references('id_table')->on('tables')->nullOnDelete();
             $table->foreign('id_employe_serveur')->references('id_employe')->on('employes')->restrictOnDelete();
-            $table->foreign('id_client')->references('id_client')->on('clients')->nullOnDelete();
+            $table->foreign('id_client')->references('id_client')->on('clients_restaurant')->nullOnDelete();
             $table->foreign('id_statut')->references('id_statut')->on('statuts_commande')->restrictOnDelete();
         });
     }
